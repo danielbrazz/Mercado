@@ -16,11 +16,7 @@ class LoginController{
 
         $dados = $this->userLogin->ValidaLogin($user, $pass);
 
-        if ($dados) {
-            echo json_encode(['status' => 'ok', 'dados' => $dados]);
-        } else {
-            echo json_encode(['status' => 'erro', 'mensagem' => 'Login inválido']);
-        }
+        
         
     }    
 }

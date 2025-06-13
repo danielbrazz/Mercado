@@ -14,11 +14,12 @@ $(document).ready(function() {
         body: (formData),
         })
          .then(response => response.json()) // pode usar .json() se o PHP responder em JSON
-        .then(data => 
-            
+        .then(data => {
+            console.log(data);
             window.location.href = './frontend/Telas/inicio.php'
+            
 
-        )
+        })
         .catch(error => console.error('Erro:', error));
         
          

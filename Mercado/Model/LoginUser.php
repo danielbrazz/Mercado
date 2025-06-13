@@ -1,6 +1,6 @@
 <?php
 require '../Config/Conecction.php';
-
+require_once '../Config/AuthJWT.php';
 class LoginUser{
     private $user;
     private $pass; 
@@ -29,7 +29,20 @@ class LoginUser{
         $sql = $pdo->prepare("select * from usuario_mercado where email=:email and senha=:senha");
         $sql->execute(['email' => $user,'senha' =>$pass]);
         $RD = $sql->fetch(PDO::FETCH_ASSOC);
-        
+
+        $payload =[
+            "exp" => time()+100,
+            "iat" => time(),
+            "email" =>$RD['email']
+        ];
+        $authJWT = new authenticJWT;
+        $token=$authJWT->AuthLoginJWT($payload);
+    
+        echo json_encode([
+            'success' => true,
+            'token' => $token,
+            'user' => $RD['email']
+        ]);
 
     }
 }
