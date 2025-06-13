@@ -8,7 +8,7 @@ $(document).ready(function() {
         let formData = new FormData();
         formData.append('email', email);
         formData.append('password', senha);
-        fetch('http://localhost/Estudo php/Junho-Estudo/Mercado/Controller/LoginController.php', {
+        fetch('http://localhost/Estudo php/Mercado/Mercado/Controller/LoginController.php', {
 
         method: 'POST',        
         body: (formData),

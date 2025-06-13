@@ -29,7 +29,7 @@ class LoginUser{
         $sql = $pdo->prepare("select * from usuario_mercado where email=:email and senha=:senha");
         $sql->execute(['email' => $user,'senha' =>$pass]);
         $RD = $sql->fetch(PDO::FETCH_ASSOC);
-        return $RD;
+        
 
     }
 }
