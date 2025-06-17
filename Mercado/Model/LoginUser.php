@@ -29,19 +29,25 @@ class LoginUser{
         $sql = $pdo->prepare("select * from usuario_mercado where email=:email and senha=:senha");
         $sql->execute(['email' => $user,'senha' =>$pass]);
         $RD = $sql->fetch(PDO::FETCH_ASSOC);
-
-        $payload =[
-            "exp" => time()+10,
-            "iat" => time(),
-            "email" =>$RD['email']
-        ];
-        $authJWT = new authenticJWT;
-        $token=$authJWT->AuthLoginJWT($payload);
-    
-        echo json_encode([
-            'success' => true,            
-            'user' => $RD['email']
-        ]);
+        if(!empty($RD)){
+            $payload =[
+                "exp" => time()+10,
+                "iat" => time(),
+                "email" =>$RD['email']
+            ];
+            $authJWT = new authenticJWT;
+            $token=$authJWT->AuthLoginJWT($payload);
+        
+            echo json_encode([
+                'success' => true,            
+                'user' => $RD['email']
+            ]);
+        }else{
+            echo json_encode([
+                'success' => false,            
+                'msg' => 'Email ou Senha incorretos'
+            ]);
+        }
 
     }
 }

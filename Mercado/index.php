@@ -1,3 +1,8 @@
+<?php
+
+include_once './frontend/Messages/messageAlert.php';
+
+ ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -14,6 +19,7 @@
 
     <div class="modal fade show" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-modal="true"
         role="dialog" style="display: block;">
+        
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">                
                 <div class="modal-body">                    
@@ -26,10 +32,14 @@
                         <input type="password" class="form-control" id="passwordInput" placeholder="Password" />
                     </div>
                     <button id="btn_acess" class="btn btn-primary w-100">Acessar</button>                    
-                </div>
-            </div>
-        </div>
+                </div>                
+            </div>            
+        </div>        
     </div>
     <script src="frontend/login.js"></script> 
+    <script src="frontend/js/messageAlert.js"></script> 
+
+    
+
 </body>
 </html>

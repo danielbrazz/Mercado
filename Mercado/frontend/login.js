@@ -17,9 +17,11 @@ $(document).ready(function() {
          .then(response => response.json()) // pode usar .json() se o PHP responder em JSON
         .then(data => {
             console.log(data);
-            window.location.href = './frontend/Telas/inicio.php'
-            
-
+            if(data.success == true){            
+                window.location.href = './frontend/Telas/inicio.php'
+            }else{
+                trata_alerta(1,data.msg);
+            }                        
         })
         .catch(error => console.error('Erro:', error));
         
