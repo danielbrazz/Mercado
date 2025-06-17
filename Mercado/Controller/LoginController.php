@@ -13,11 +13,7 @@ class LoginController{
         
         $user = $this->userLogin->get_user();
         $pass = $this->userLogin->get_pass();
-
         $dados = $this->userLogin->ValidaLogin($user, $pass);
-
-        
-        
     }    
 }
 // Execução real
