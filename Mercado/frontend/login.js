@@ -8,6 +8,7 @@ $(document).ready(function() {
         let formData = new FormData();
         formData.append('email', email);
         formData.append('password', senha);
+        url_atual = window.location.href;
         fetch('http://localhost/Estudo php/Mercado/Mercado/Controller/LoginController.php', {
 
         method: 'POST',        

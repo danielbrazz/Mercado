@@ -1,2 +1,2 @@
-<?php include '../Template/header.php';
+<?php include_once '../Template/header.php';
 

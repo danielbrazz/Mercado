@@ -1,3 +1,33 @@
+<?php 
+include __DIR__ . '/../../CONFIG/AuthJWT.php';
+
+
+if (!empty($_COOKIE['token'])) {
+    $validaToken = new authenticJWT();
+    $resultado = $validaToken->ValidaTokenJWT($_COOKIE['token']);
+
+    if (!$resultado['success']) {
+        // Token inválido ou expirado
+        header("Location: /Estudo%20php/Mercado/Mercado/");
+        exit;
+    }
+    
+    $payload = $resultado['data'];
+    if (time() >= $payload->exp) {
+        // Token expirou
+        header("Location: /Estudo%20php/Mercado/Mercado/");
+        exit;
+    }
+
+} else {
+
+    header("Location: /Estudo%20php/Mercado/Mercado/");
+    exit;
+}
+
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 

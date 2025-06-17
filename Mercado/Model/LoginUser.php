@@ -31,7 +31,7 @@ class LoginUser{
         $RD = $sql->fetch(PDO::FETCH_ASSOC);
 
         $payload =[
-            "exp" => time()+100,
+            "exp" => time()+10,
             "iat" => time(),
             "email" =>$RD['email']
         ];
@@ -39,8 +39,7 @@ class LoginUser{
         $token=$authJWT->AuthLoginJWT($payload);
     
         echo json_encode([
-            'success' => true,
-            'token' => $token,
+            'success' => true,            
             'user' => $RD['email']
         ]);
 
